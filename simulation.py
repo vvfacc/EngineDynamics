@@ -22,7 +22,7 @@ r_cs = 0.05 # crankshaft radius (m)
 
 # geometric calculated parameters
 A_p = m.pi*(d_p/2)**2 # piston cross-sectional area (m^2)
-I_c = 1/3*m_c*l_c**2 # crank MOI about crankshaft axis (kg*m^2)
+I_c = 4/3*m_c*l_c**2 # crank MOI about crankshaft axis (kg*m^2)
 I_cs = 1/2*m_cs*r_cs**2 # crankshaft MOI (kg*m^2)
 
 # thermodynamic input parameters
