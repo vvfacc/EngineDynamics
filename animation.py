@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Nov 30 17:49:53 2022
-
-@author: christian
+Project: 4-Stroke Cycle Simulation and Animation
+Section: ME 369P
+Team: U20
+Members:
+    Bhargav Parthasarathy
+    Christian Lewandowski
+    Nicholas Hackworth
+    Van Vo
 """
 
 
