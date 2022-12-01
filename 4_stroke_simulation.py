@@ -13,7 +13,7 @@ import matplotlib.animation as animation
 import numpy as np
 
 # geometric input parameters
-d_p = 0.03 # piston diameter (m)
+d_p = 0.05 # piston diameter (m)
 s = 0.003 # height above TDC (m)
 m_c = 1 # crank mass (kg)
 l_c = 0.05 # crank length (m)
@@ -48,7 +48,7 @@ P_cb_f = P_c_f*T_cb_f/T_c_f # final combustion pressure (Pa)
 
 # initial conditions
 theta_cs = 0 # crankshaft angle corresponding to TDC (rad)
-w_cs = 0.5 # crankshaft angular velocity (rad/s)
+w_cs = 2 # crankshaft angular velocity (rad/s)
 
 # simulation parameters
 theta_cs_limit = 8*np.pi # crankshaft angle iteration limit
@@ -61,7 +61,6 @@ w_cs_list = [w_cs] # crankshaft angular velocity list
 a_cs_list = [0] # crankshaft angular acceleration list
 F_c_list = [0] # compression force list
 F_p_list = [0] # power stroke force list
-h_list = [0] # piston height list; used for animation
 
 # simulation loop
 while theta_cs < theta_cs_limit:
@@ -85,7 +84,6 @@ while theta_cs < theta_cs_limit:
     a_cs_list.append(a_cs)
     F_c_list.append(F_c)
     F_p_list.append(F_p)
-    h_list.append(s+l_c-l_c*np.cos(theta_cs))
 
 # plots
 theta_range = np.arange(0, theta_cs_limit+np.pi, np.pi)
@@ -137,69 +135,70 @@ plt.xlabel('Crankshaft Angle (rad)')
 plt.title('Piston Combustion Force vs Angle')
 plt.grid()
 
-# animation
-# create objects to populate animation
-l_co = 0.1 # length of the connecting rod
+# animation setup
+l_co = 0.1 # connecting rod length (m)
+h_p = 0.03 # piston height (m)
+plot_cl = 0.01 # minimum clearance between piston assembly and plot edges
+cylinder_top_y = l_c+l_co+h_p+s # y-coordinate for top of cylinder (m)
+
 fig = plt.figure()
-fig.set_dpi(100)
-fig.set_size_inches(7, 6.5)
-ax = plt.axes(xlim = (-0.06,0.06), ylim = (-0.06, 0.26))
-
-gas = plt.Rectangle((-d_p/2, l_co + 2*l_c), d_p, s, fc = 'c')
-circle = plt.Circle((0, 0), radius=r_cs, fc='y')
-piston = plt.Rectangle((-d_p/2, l_co + l_c), d_p, l_c, fc='k')
-crankshaft = plt.Line2D((0, 0), (0, l_c), lw=5, 
-                          marker='.', 
-                          markersize=10, 
-                          markerfacecolor='r', 
-                          markeredgecolor='r', 
-                          alpha=0.5)
-crank = plt.Line2D((0, 0), (l_c, l_c + l_co), lw=5, 
-                          marker='.', 
-                          markersize=10, 
-                          markerfacecolor='r', 
-                          markeredgecolor='r', 
-                          alpha=0.5)
-
+# fig.set_dpi(80)
+# fig.set_size_inches(7, 6.5)
+ax = plt.axes(xlim = (-l_c-plot_cl,l_c+plot_cl), ylim = (-l_c-plot_cl, l_c+l_co+h_p+s+plot_cl+0.1))
 plt.axis('scaled')
 
-# put objects on figure to initialize
+# object creation and starting positions
+gas = plt.Rectangle((-d_p/2, l_c+l_co+h_p), d_p, s, fc = 'c')
+circle = plt.Circle((0, 0), radius=r_cs, fc='k')
+piston = plt.Rectangle((-d_p/2, l_c+l_co), d_p, h_p, fc='k')
+crank = plt.Line2D((0, 0), (0, l_c), lw=5,
+                          marker='.', 
+                          markersize=10, 
+                          markerfacecolor='m', 
+                          markeredgecolor='m', 
+                          alpha=0.5)
+conrod = plt.Line2D((0, 0), (l_c, l_c+l_co), lw=5,
+                          marker='.', 
+                          markersize=10, 
+                          markerfacecolor='m', 
+                          markeredgecolor='m', 
+                          alpha=0.5)
+cylinder_left = plt.Line2D((-d_p/2, -d_p/2), (l_co-l_c, cylinder_top_y), lw=2)
+cylinder_right = plt.Line2D((d_p/2, d_p/2), (l_co-l_c, cylinder_top_y), lw=2)
+cylinder_top = plt.Line2D((-d_p/2, d_p/2), (cylinder_top_y, cylinder_top_y), lw=2)
+
+# plot objects in figure to initialize
 def init():
-    plt.gca().add_line(crankshaft)
     plt.gca().add_line(crank)
+    plt.gca().add_line(conrod)
     plt.gca().add_patch(circle)
     plt.gca().add_patch(piston)
     plt.gca().add_patch(gas)
-    return crankshaft, crank, circle, piston, gas
+    plt.gca().add_line(cylinder_left)
+    plt.gca().add_line(cylinder_right)
+    plt.gca().add_line(cylinder_top)
+    return crank, conrod, circle, piston, gas, cylinder_left, cylinder_right, cylinder_top
 
-#
 def animate(i):
-    
-    # get current object positions
-    x, y = tuple(crankshaft.get_xydata()[1])
-    h_piston = piston.get_y()
-    gas_y = gas.get_y()
-    top_of_cylinder = l_co + 2*l_c + s
-    
     # calculate next object position
-    x = l_c * np.sin(i)
-    y = l_c * np.cos(i)
-    h_piston = l_co + l_c * np.cos(i)
-    gas_y = h_piston + l_c
-    height_gas = top_of_cylinder - gas_y
+    crank_x = l_c*np.sin(i)
+    crank_y = l_c*np.cos(i)
+    piston_y = l_c*np.cos(i)+l_co
+    gas_y = piston_y+h_p
+    gas_h = cylinder_top_y-gas_y
 
     # set new object position
-    crankshaft.set_xdata([0, x])
-    crankshaft.set_ydata([0, y])
-    piston.set_y(h_piston)
-    crank.set_xdata([x, 0])
-    crank.set_ydata([y, h_piston])
+    crank.set_xdata([0, crank_x])
+    crank.set_ydata([0, crank_y])
+    piston.set_y(piston_y)
+    conrod.set_xdata([crank_x, 0])
+    conrod.set_ydata([crank_y, piston_y])
     gas.set_y(gas_y)
-    gas.set_height(height_gas)
-    if i <= np.pi:
-        pass
-    elif np.pi < i <= 2*np.pi:
-        gas.set_facecolor("g")
+    gas.set_height(gas_h)
+    
+    # gas color-coding for 4-stroke cycle
+    if np.pi < i <= 2*np.pi:
+        gas.set_facecolor("y")
     elif 2*np.pi < i <= 3*np.pi:
         gas.set_facecolor('r')
     elif 3*np.pi < i <= 4*np.pi:
@@ -207,12 +206,12 @@ def animate(i):
     elif 4*np.pi < i <= 5*np.pi:
         gas.set_facecolor("c")
     elif 5*np.pi < i <= 6*np.pi:
-        gas.set_facecolor('g')
+        gas.set_facecolor('y')
     elif 6*np.pi < i <= 7*np.pi:
         gas.set_facecolor('r')
     elif 7*np.pi < i <= 8*np.pi:
         gas.set_facecolor('b')
-    return crankshaft, crank, piston, gas
+    return crank, conrod, piston, gas
 
 # create and save animation
 anim = animation.FuncAnimation(fig, animate, 
@@ -221,4 +220,4 @@ anim = animation.FuncAnimation(fig, animate,
                                 interval= 200,
                                 blit=True)
 
-anim.save('piston_test.gif', fps = 60, dpi=80, writer='pillow')
+anim.save('piston_motion.gif', fps = 60, dpi=80, writer='pillow')
