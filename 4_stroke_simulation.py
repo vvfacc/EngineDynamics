@@ -146,6 +146,7 @@ fig = plt.figure()
 # fig.set_size_inches(7, 6.5)
 ax = plt.axes(xlim = (-l_c-plot_cl,l_c+plot_cl), ylim = (-l_c-plot_cl, l_c+l_co+h_p+s+plot_cl))
 plt.axis('scaled')
+plt.xlabel('Intake')
 
 # object creation and starting positions
 gas = plt.Rectangle((-d_p/2, l_c+l_co+h_p), d_p, s, fc = 'c')
@@ -199,18 +200,25 @@ def animate(i):
     # gas color-coding for 4-stroke cycle
     if np.pi < i <= 2*np.pi:
         gas.set_facecolor("y")
+        plt.xlabel('Compression')
     elif 2*np.pi < i <= 3*np.pi:
         gas.set_facecolor('r')
+        plt.xlabel('Combustion')
     elif 3*np.pi < i <= 4*np.pi:
         gas.set_facecolor('b')
+        plt.xlabel('Exhaust')
     elif 4*np.pi < i <= 5*np.pi:
         gas.set_facecolor("c")
+        plt.xlabel('Intake')
     elif 5*np.pi < i <= 6*np.pi:
         gas.set_facecolor('y')
+        plt.xlabel('Compression')
     elif 6*np.pi < i <= 7*np.pi:
         gas.set_facecolor('r')
+        plt.xlabel('Combustion')
     elif 7*np.pi < i <= 8*np.pi:
         gas.set_facecolor('b')
+        plt.xlabel('Exhaust')
     return crank, conrod, piston, gas
 
 # create and save animation
