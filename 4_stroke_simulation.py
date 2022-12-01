@@ -144,7 +144,7 @@ cylinder_top_y = l_c+l_co+h_p+s # y-coordinate for top of cylinder (m)
 fig = plt.figure()
 # fig.set_dpi(80)
 # fig.set_size_inches(7, 6.5)
-ax = plt.axes(xlim = (-l_c-plot_cl,l_c+plot_cl), ylim = (-l_c-plot_cl, l_c+l_co+h_p+s+plot_cl+0.1))
+ax = plt.axes(xlim = (-l_c-plot_cl,l_c+plot_cl), ylim = (-l_c-plot_cl, l_c+l_co+h_p+s+plot_cl))
 plt.axis('scaled')
 
 # object creation and starting positions
