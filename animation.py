@@ -85,7 +85,7 @@ def animate(i):
         gas.set_facecolor('g')
     elif 6*m.pi < i <= 7*m.pi:
         gas.set_facecolor('r')
-    elif 6*m.pi < i <= 7*m.pi:
+    elif 7*m.pi < i <= 8*m.pi:
         gas.set_facecolor('b')
     return crankshaft, crank, piston, gas
 

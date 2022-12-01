@@ -93,12 +93,17 @@ theta_ticks = [0, 'π']
 for a in range(2, len(theta_range)):
     theta_ticks.append(str(a)+'π')
 
+Tavg = sum(T_cs_list)/len(T_cs_list)
+
 plt.figure()
 plt.plot(theta_cs_list, T_cs_list)
+plt.axhline(y=Tavg, color='r', linestyle='-', label='Average Torque')
 plt.xticks(theta_range, theta_ticks)
 plt.ylabel('Crankshaft Torque (Nm)')
 plt.xlabel('Crankshaft Angle (rad)')
 plt.title('Crankshaft Torque vs Angle')
+plt.grid()
+plt.legend(loc='upper right')
 
 plt.figure()
 plt.plot(theta_cs_list, w_cs_list)
@@ -106,6 +111,7 @@ plt.xticks(theta_range, theta_ticks)
 plt.ylabel('Crankshaft Angular Velocity (rad/s)')
 plt.xlabel('Crankshaft Angle (rad)')
 plt.title('Crankshaft Angular Velocity vs Angle')
+plt.grid()
 
 plt.figure()
 plt.plot(theta_cs_list, a_cs_list)
@@ -120,6 +126,7 @@ plt.xticks(theta_range, theta_ticks)
 plt.ylabel('Piston Compression Force (N)')
 plt.xlabel('Crankshaft Angle (rad)')
 plt.title('Piston Compression Force vs Angle')
+plt.grid()
 
 plt.figure()
 plt.plot(theta_cs_list, F_p_list)
@@ -127,3 +134,4 @@ plt.xticks(theta_range, theta_ticks)
 plt.ylabel('Piston Combustion Force (N)') # technically this is combustion + power-stroke force, but this stage is commonly referred to as the combustion stage, so calling it that
 plt.xlabel('Crankshaft Angle (rad)')
 plt.title('Piston Combustion Force vs Angle')
+plt.grid()
