@@ -86,7 +86,7 @@ After running the script, 5 plots should be created for the simulation outputs, 
 
 
 ## 5. How to use: piston_kinematics.py
-This script shows an investigation of the engine kinematics with an assumptions of constant velocity
+This script shows an investigation of engine kinematics with constant velocity and geometric inputs
 
 Run
 
@@ -94,7 +94,7 @@ Run
 python3 pistin_kinematics.py
 ```
  
-Input your variables for the engine properties parameters: radius of crank, length of conrod, and the engine rpm
+Input your variables for the engine properties parameters: crank length, connecting rod length, and the engine rpm
 
 Example: 
 
@@ -122,13 +122,13 @@ Formula of the equation of position in LATEX form:
 
  </div>
 
- Also the acceleration:
+ And similarly for acceleration:
  <div align = 'center'>
 
  $\ddot{x} = - \omega^{2} r \cos{\left(\omega t \right)} + \frac{\omega^{2} r^{2} \sin^{2}{\left(\omega t \right)}}{l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}}} - \frac{\omega^{2} r^{2} \cos^{2}{\left(\omega t \right)}}{l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}}} - \frac{\omega^{2} r^{4} \sin^{2}{\left(\omega t \right)} \cos^{2}{\left(\omega t \right)}}{l^{3} \left(1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}\right)^{\frac{3}{2}}}$
 
  </div>
 
-### Output 2
+### Output 2:
 This output will show the graphs of kinematic analysis of the engine via user input:
 ![piston_kinematics_plots](https://user-images.githubusercontent.com/112368478/205214328-f4144104-a2aa-43c6-8a68-52199c052c7d.jpeg)
