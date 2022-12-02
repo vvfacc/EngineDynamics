@@ -55,7 +55,7 @@ This output will show the general formula of the piston motion in LATEX format.
 Formula of the equation of position in LATEX form:
 
 <div align='center'>
-? x = l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}} + r \cos{\left(\omega t \right)}
+?x = l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}} + r \cos{\left(\omega t \right)}?
 </div>
 
 
