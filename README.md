@@ -35,19 +35,19 @@ This script shows an investigation of the engine kinematics with an assumptions 
 
 Run
 
-'''
+```
 python3 pistin_kinematics.py
-'''
+```
  
 Input your variables for the engine properties parameters: radius of crank, length of conrod, and the engine rpm
 
 Example: 
 
- '''
+```
 Please enter the length of the crank (in): 10
 Please enter length of connecting rod (in): 35
 Please enter the angular velocity of the engine (rpm): 5000
-'''
+```
 
 ### Output 1:
 This output will show the general formula of the piston motion in LATEX format.
@@ -55,9 +55,24 @@ This output will show the general formula of the piston motion in LATEX format.
 Formula of the equation of position in LATEX form:
 
 <div align='center'>
-?x = l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}} + r \cos{\left(\omega t \right)}?
-</div>
 
+ $x = l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}} + r \cos{\left(\omega t \right)}$
+
+ </div>
+
+ The velocity of piston is obtained by differentiated position versus time:
+ <div align = 'center'>
+
+ $\dot{x} = - \omega r \sin{\left(\omega t \right)} - \frac{\omega r^{2} \sin{\left(\omega t \right)} \cos{\left(\omega t \right)}}{l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}}}$
+
+ </div>
+
+ Also the acceleration:
+ <div align = 'center'>
+
+ $\ddot{x} = - \omega^{2} r \cos{\left(\omega t \right)} + \frac{\omega^{2} r^{2} \sin^{2}{\left(\omega t \right)}}{l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}}} - \frac{\omega^{2} r^{2} \cos^{2}{\left(\omega t \right)}}{l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}}} - \frac{\omega^{2} r^{4} \sin^{2}{\left(\omega t \right)} \cos^{2}{\left(\omega t \right)}}{l^{3} \left(1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}\right)^{\frac{3}{2}}}$
+
+ </div>
 
 ### Output 2
 This output will show the 
