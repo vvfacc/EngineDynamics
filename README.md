@@ -29,8 +29,8 @@ After running the script, 5 plots should be created for the simulation outputs, 
 ![image](https://user-images.githubusercontent.com/112368478/205208082-a42cceb3-010d-4bcc-8d02-372850705339.png)
 ![piston_motion](https://user-images.githubusercontent.com/112368478/205208108-0fbb5e25-5023-4441-a2d3-b8c2b60b33ae.gif)
 
-## 4. How to use: piston_kinematics.py
-## 4. How to use: piston_kinematics.py
+
+## 5. How to use: piston_kinematics.py
 This script shows an investigation of the engine kinematics with an assumptions of constant velocity
 
 Run
@@ -75,4 +75,4 @@ Formula of the equation of position in LATEX form:
  </div>
 
 ### Output 2
-This output will show the 
+This output will show the graphs of kinematic analysis of the engine via user input. 
