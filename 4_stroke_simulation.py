@@ -19,6 +19,9 @@ m_c = 1 # crank mass (kg)
 l_c = 0.05 # crank length (m)
 m_cs = 20 # crankshaft mass (kg)
 r_cs = 0.01 # crankshaft radius (m)
+l_co = 0.1 # connecting rod length (m) - relevant for animation
+h_p = 0.03 # piston height (m) - relevant for animation
+plot_cl = 0.01 # minimum clearance between piston assembly and plot edges - relevant for animation
 
 # geometric calculated parameters
 A_p = np.pi*(d_p/2)**2 # piston cross-sectional area (m^2)
@@ -136,9 +139,6 @@ plt.title('Piston Combustion Force vs Angle')
 plt.grid()
 
 # animation setup
-l_co = 0.1 # connecting rod length (m)
-h_p = 0.03 # piston height (m)
-plot_cl = 0.01 # minimum clearance between piston assembly and plot edges
 cylinder_top_y = l_c+l_co+h_p+s # y-coordinate for top of cylinder (m)
 
 fig = plt.figure()
