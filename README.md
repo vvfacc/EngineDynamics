@@ -130,4 +130,5 @@ Formula of the equation of position in LATEX form:
  </div>
 
 ### Output 2
-This output will show the graphs of kinematic analysis of the engine via user input. 
+This output will show the graphs of kinematic analysis of the engine via user input:
+![piston_kinematics_plots](https://user-images.githubusercontent.com/112368478/205214328-f4144104-a2aa-43c6-8a68-52199c052c7d.jpeg)
