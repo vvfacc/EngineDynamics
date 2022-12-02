@@ -1,32 +1,14 @@
 # EngineDynamics
-Final Project of ME359P - Dynamics Analysis of Car Engine
+ME 369P Final Project - 4-Stroke Cycle Simulation, Animation, and Kinematic Analysis
 
-## 1. Introduction
-...Updating
-## 2. The four-strokes engine cycle
-... updating
-## 3. The use of PyDy in the project
-This project is just PyDy to genetate the formula of the kinamtics and dynamics analysis of the 4 strokes engine
-The formula is the LATEX code output from the Python file
-## 4. Kinematics of the slider-crank (piston-cylinder)
+## 1. Objective
+Model the basic dynamics of an ideal 4-stroke cycle piston assembly, and animate a single piston assembly
 
-Let the crank radius be r and the conrod length be l. The angle of the crank is theta and the angle of the conrod makes with X axis is phi. For any constant crank velocity, the position of the piston, which is the equation of motions of this system is define as:
-<div align='center'>
+## 2. Requirements
+- Define and implement forcing function
+- Derive EOM for single piston assembly
+- Plot torque and angular velocity about crankshaft
 
-$x = l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}} + r \cos{\left(\omega t \right)}$
+## 3. How to use: 4_stroke_simulation.py
 
-</div>
-
-The velocity of piston is obtained by differentiated position versus time:
-<div align = 'center'>
-
-$\dot{x} = - \omega r \sin{\left(\omega t \right)} - \frac{\omega r^{2} \sin{\left(\omega t \right)} \cos{\left(\omega t \right)}}{l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}}}$
-
-</div>
-
-Also the acceleration:
-<div align = 'center'>
-
-$\ddot{x} = - \omega^{2} r \cos{\left(\omega t \right)} + \frac{\omega^{2} r^{2} \sin^{2}{\left(\omega t \right)}}{l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}}} - \frac{\omega^{2} r^{2} \cos^{2}{\left(\omega t \right)}}{l \sqrt{1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}}} - \frac{\omega^{2} r^{4} \sin^{2}{\left(\omega t \right)} \cos^{2}{\left(\omega t \right)}}{l^{3} \left(1 - \frac{r^{2} \sin^{2}{\left(\omega t \right)}}{l^{2}}\right)^{\frac{3}{2}}}$
-
-</div>
+## 3. How to use: piston_kinematics.py
