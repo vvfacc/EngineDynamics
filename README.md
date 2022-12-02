@@ -11,4 +11,4 @@ Model the basic dynamics of an ideal 4-stroke cycle piston assembly, and animate
 
 ## 3. How to use: 4_stroke_simulation.py
 
-## 3. How to use: piston_kinematics.py
+## 4. How to use: piston_kinematics.py
