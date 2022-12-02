@@ -9,7 +9,10 @@ Model the basic dynamics of an ideal 4-stroke cycle piston assembly, and animate
 - Derive EOM for single piston assembly
 - Plot torque and angular velocity about crankshaft
 
-## 3. How to use: 4_stroke_simulation.py
+## 3. Required packages
+
+
+## 4. How to use: 4_stroke_simulation.py
 This script simulates an ideal 4-stroke cycle for a 4-piston assembly, plots ouputs such as crankshaft torque and angular velocity, and animates a single piston assembly.
 
 User inputs can be provided in the following sections:
@@ -26,4 +29,4 @@ After running the script, 5 plots should be created for the simulation outputs, 
 ![image](https://user-images.githubusercontent.com/112368478/205208082-a42cceb3-010d-4bcc-8d02-372850705339.png)
 ![piston_motion](https://user-images.githubusercontent.com/112368478/205208108-0fbb5e25-5023-4441-a2d3-b8c2b60b33ae.gif)
 
-## 4. How to use: piston_kinematics.py
+## 5. How to use: piston_kinematics.py
