@@ -33,14 +33,52 @@ conda install numpy
 This script simulates an ideal 4-stroke cycle for a 4-piston assembly, plots ouputs such as crankshaft torque and angular velocity, and animates a single piston assembly.
 
 User inputs can be provided in the following sections:
-- Geometric input parameters
-![image](https://user-images.githubusercontent.com/112368478/205207378-22a21aac-4367-4ef2-a927-9569459da38b.png)
-- Thermodynamic input parameters
-![image](https://user-images.githubusercontent.com/112368478/205207425-3d4a21b0-09ef-4a31-a5ff-94b6fab6b779.png)
-- Initial conditions  
-![image](https://user-images.githubusercontent.com/112368478/205207451-9d732953-4d97-4e79-bef9-3ae6a52f19ec.png)
-- Simulation parameters   
-![image](https://user-images.githubusercontent.com/112368478/205207488-4c945b9b-cfff-414f-af77-4269c5667bdc.png)
+- Geometric input parameters:
+```
+# geometric input parameters
+d_p = 0.05 # piston diameter (m)
+s = 0.003 # height above TDC (m)
+m_c = 1 # crank mass (kg)
+l_c = 0.05 # crank length (m)
+m_cs = 20 # crankshaft mass (kg)
+r_cs = 0.01 # crankshaft radius (m)
+l_co = 0.1 # connecting rod length (m) - relevant for animation
+h_p = 0.03 # piston height (m) - relevant for animation
+plot_cl = 0.01 # minimum clearance between piston assembly and plot edges - relevant for animation
+```
+- Thermodynamic input parameters:
+```
+# thermodynamic input parameters
+P_atm = 101325 # atmospheric pressure (Pa)
+T_atm = 298.15 # atmospheric temperature (K)
+Cp_AF = 1005 # specific heat of constant pressure, for air-fuel mixture (J/kg*K)
+Cv_AF = 718 # specific heat of constant volume, for air-fuel mixture (J/kg*K)
+R = 8.3145 # molar gas constant (J/(mol*K))
+AFR = 14.7 # ideal stoichiometric ratio of air to fuel
+M_F = 0.1 # molar mass of fuel (kg/mol) - using gasoline
+Hc_F = 47000000 # heat of combustion of fuel (J/kg) - using gasoline
+M_A = 0.029 # molar mass of air (kg/mol)
+```
+- Initial conditions:
+```
+# initial conditions
+theta_cs = 0 # crankshaft angle corresponding to TDC (rad)
+w_cs = 2 # crankshaft angular velocity (rad/s)
+```
+- Simulation parameters:
+```
+# simulation parameters
+theta_cs_limit = 8*np.pi # crankshaft angle iteration limit
+ts = 0.0001 # time step (s)
+t = 0 # total time (s)
+theta_cs_list = [theta_cs] # crankshaft angle list
+t_list = [t] # total time list
+T_cs_list = [0] # crankshaft torque list
+w_cs_list = [w_cs] # crankshaft angular velocity list
+a_cs_list = [0] # crankshaft angular acceleration list
+F_c_list = [0] # compression force list
+F_p_list = [0] # power stroke force list
+```
 
 After running the script, 5 plots should be created for the simulation outputs, along with a .gif animation of a single piston assembly:
 ![image](https://user-images.githubusercontent.com/112368478/205208082-a42cceb3-010d-4bcc-8d02-372850705339.png)
