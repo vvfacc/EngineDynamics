@@ -91,7 +91,7 @@ This script shows an investigation of engine kinematics with constant velocity a
 Run
 
 ```
-python3 pistin_kinematics.py
+python3 piston_kinematics.py
 ```
  
 Input your variables for the engine properties parameters: crank length, connecting rod length, and the engine rpm
