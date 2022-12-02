@@ -10,7 +10,24 @@ Model the basic dynamics of an ideal 4-stroke cycle piston assembly, and animate
 - Plot torque and angular velocity about crankshaft
 
 ## 3. Required packages
+Matplotlib:
+```
+python -m pip install -U pip
+python -m pip install -U matplotlib
+conda install matplotlib
+```
 
+Sympy:
+```
+pip install sympy
+conda install -c anaconda sympy
+```
+
+Numpy:
+```
+pip install numpy
+conda install numpy
+```
 
 ## 4. How to use: 4_stroke_simulation.py
 This script simulates an ideal 4-stroke cycle for a 4-piston assembly, plots ouputs such as crankshaft torque and angular velocity, and animates a single piston assembly.
